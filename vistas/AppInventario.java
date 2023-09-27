@@ -36,13 +36,14 @@ public class AppInventario {
                     "Descripción: " + productos[pos].getDescripcion() + "\n" +
                     "Stock: " + productos[pos].getStock() + "\n" +
                     "Valor compra: " + productos[pos].getValorCompra() + "\n" + 
-                    "Ganancia: " + productos[pos].getGanancia() + "\n" +
+                    "Ganancia (%): " + productos[pos].getGanancia() + "\n" +
                     "Valor venta: "  + productos[pos].getValorVenta() + "\n" 
                 );
         }else{
             JOptionPane.showMessageDialog(null, "No se encontraron registros");
         }
     }
+    
 
     private static void fntSelector(int opcion){
         String codigo = "";

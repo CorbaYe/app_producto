@@ -20,6 +20,16 @@ public class ClsProductos{
         this.valorVenta = (valorCompra * ganancia) + valorCompra;
     }
 
+    /////
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    ///////
     public String getCodigo() {
         return codigo;
     }
@@ -28,16 +38,8 @@ public class ClsProductos{
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getDescripcion() {
         return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public int getStock() {
