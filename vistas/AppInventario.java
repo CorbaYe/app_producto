@@ -7,6 +7,9 @@ import modelo.ClsProductos;
 public class AppInventario {
     static ClsProductos [] productos = new ClsProductos[100];
     static int posicionesP = 0;
+    static boolean sw;
+    static int pos;
+
     public static void main(String[] args) {
         fntMenu(true);
     }
@@ -15,6 +18,29 @@ public class AppInventario {
         productos[posicionesP] = new ClsProductos(codigo, nombre, descripcion, stock, valorCompra, ganancia);
         posicionesP++;
         JOptionPane.showMessageDialog(null,"Producto registrado","Registro",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private static void fnt_consultar(String codigo){
+        sw = false;
+        pos = 0;
+        for (int i = 0; i < posicionesP; i++) {
+            if(codigo.equals(productos[i].getCodigo())){
+                sw = true;
+                pos = i;
+                break;
+            }
+        }
+        if(sw){
+            JOptionPane.showInputDialog(null, "<<< CONSULTAR>>>\n\n" +
+                    "Nombre: " + productos[pos].getNombre() + "\n" +
+                    "Descripción: " + productos[pos].getDescripcion() + "\n" +
+                    "Stock: " + productos[pos].getStock() + "\n" +
+                    "Valor compra: " + productos[pos].getValorCompra() + "\n" + 
+                    "Ganancia: " + productos[pos].getGanancia() + "\n" +
+                    "Valor venta: "  + productos[pos].getValorVenta() + "\n" 
+                );
+        }
+
     }
 
     private static void fntSelector(int opcion){
