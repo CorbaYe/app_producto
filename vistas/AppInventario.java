@@ -19,7 +19,14 @@ public class AppInventario {
 
     private static void fntSelector(int opcion){
         switch(opcion){
-            case 1:
+            case 1: String codigo = JOptionPane.showInputDialog(null, "Código");
+                    String nombre = JOptionPane.showInputDialog(null, "Nombre");
+                    String descripcion = JOptionPane.showInputDialog(null, "Descripción");
+                    int stock = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock"));
+                    float vcompra = Float.parseFloat(JOptionPane.showInputDialog(null, "Valor compra"));
+                    float ganancia = Float.parseFloat(JOptionPane.showInputDialog(null, "Ganancia"));
+                    fntRegistrar(codigo, nombre, descripcion, stock, vcompra, ganancia);
+                    break;
             case 6: System.exit(0);
                 break;
         }
