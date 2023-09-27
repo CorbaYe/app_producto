@@ -20,7 +20,7 @@ public class AppInventario {
         JOptionPane.showMessageDialog(null,"Producto registrado","Registro",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private static void fnt_consultar(String codigo){
+    private static void fntConsultar(String codigo){
         sw = false;
         pos = 0;
         for (int i = 0; i < posicionesP; i++) {
@@ -31,7 +31,7 @@ public class AppInventario {
             }
         }
         if(sw){
-            JOptionPane.showInputDialog(null, "<<< CONSULTAR>>>\n\n" +
+            JOptionPane.showMessageDialog(null, "<<< CONSULTAR>>>\n\n" +
                     "Nombre: " + productos[pos].getNombre() + "\n" +
                     "Descripción: " + productos[pos].getDescripcion() + "\n" +
                     "Stock: " + productos[pos].getStock() + "\n" +
@@ -39,22 +39,35 @@ public class AppInventario {
                     "Ganancia: " + productos[pos].getGanancia() + "\n" +
                     "Valor venta: "  + productos[pos].getValorVenta() + "\n" 
                 );
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontraron registros");
         }
-
     }
 
     private static void fntSelector(int opcion){
+        String codigo = "";
+        String nombre = "";
+        String descripcion = "";
+        int stock = 0;
+        float vcompra = 0;
+        float ganancia = 0;
+
         switch(opcion){
-            case 1: String codigo = JOptionPane.showInputDialog(null, "Código");
-                    String nombre = JOptionPane.showInputDialog(null, "Nombre");
-                    String descripcion = JOptionPane.showInputDialog(null, "Descripción");
-                    int stock = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock"));
-                    float vcompra = Float.parseFloat(JOptionPane.showInputDialog(null, "Valor compra"));
-                    float ganancia = Float.parseFloat(JOptionPane.showInputDialog(null, "Ganancia"));
+            case 1: codigo = JOptionPane.showInputDialog(null, "Código");
+                    nombre = JOptionPane.showInputDialog(null, "Nombre");
+                    descripcion = JOptionPane.showInputDialog(null, "Descripción");
+                    stock = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock"));
+                    vcompra = Float.parseFloat(JOptionPane.showInputDialog(null, "Valor compra"));
+                    ganancia = Float.parseFloat(JOptionPane.showInputDialog(null, "Ganancia"));
                     fntRegistrar(codigo, nombre, descripcion, stock, vcompra, ganancia);
+                    break;
+            case 2: codigo = JOptionPane.showInputDialog(null, "Código");
+                    fntConsultar(codigo);
                     break;
             case 6: System.exit(0);
                 break;
+            default: JOptionPane.showMessageDialog(null,"Opción no disponible");
+                     break;
         }
     }
 
