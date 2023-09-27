@@ -57,12 +57,5 @@ public class ClsProductos{
     public float getValorVenta() {
         return valorVenta;
     }
-
-    @Override
-    public String toString() {
-        return "ClsProductos [codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", stock="
-                + stock + ", valorCompra=" + valorCompra + ", ganancia=" + ganancia + ", valorVenta=" + valorVenta
-                + "]";
-    }
 }
     
