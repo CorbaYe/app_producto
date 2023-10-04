@@ -44,6 +44,43 @@ public class AppInventario {
         }
     }
     
+    private static void fntActualizar(String codigo){
+        sw = false;
+        pos = 0;
+        for(int i = 0; i < posicionesP; i++){
+            if(codigo.equals(productos[i].getCodigo())){
+                sw = true;
+                pos = i;
+                break;
+            }
+        }
+        if(sw){
+            boolean salir = true;
+            do{
+                int opcion = Integer.parseInt(
+                    JOptionPane.showInputDialog(null, "<<< MENÚ ACTUALIZAR >>>\n\n" +
+                        "1. Actualizar nombre\n" +
+                        "2. Actualizar descripción\n" +
+                        "3. Salir\n"
+                    ));
+                switch(opcion){
+                    case 1: String nombre = JOptionPane.showInputDialog(null, "Nombre");
+                            productos[pos].setNombre(nombre);
+                            JOptionPane.showMessageDialog(null, "Nombre del producto actualizado","ACTUALIZAR",JOptionPane.INFORMATION_MESSAGE);
+                            break;
+                    case 2: String descripcion = JOptionPane.showInputDialog(null, "Descripción");
+                            productos[pos].setDescripcion(descripcion);
+                            JOptionPane.showMessageDialog(null, "Descripción del producto actualizada","ACTUALIZAR",JOptionPane.INFORMATION_MESSAGE);
+                            break;
+                    case 3: salir = false;
+                            break;
+                    default: JOptionPane.showMessageDialog(null, "Opción no disponible","ACTUALIZAR",JOptionPane.WARNING_MESSAGE);
+                }
+            }while(salir);
+        }else{
+            JOptionPane.showMessageDialog(null,"No se encontraron registros","ACTUALIZAR", JOptionPane.WARNING_MESSAGE);
+        }
+    }
 
     private static void fntSelector(int opcion){
         String codigo = "";
@@ -64,6 +101,9 @@ public class AppInventario {
                     break;
             case 2: codigo = JOptionPane.showInputDialog(null, "Código");
                     fntConsultar(codigo);
+                    break;
+            case 3: codigo = JOptionPane.showInputDialog(null, "Código");
+                    fntActualizar(codigo);
                     break;
             case 6: System.exit(0);
                 break;
